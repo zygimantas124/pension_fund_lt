@@ -1,0 +1,43 @@
+{
+  "app.title": "II Pensijų Pakopos Fondų Palyginimo Įrankis",
+
+  "label.fund_type": "Pasirinkite savo fondą:",
+  "label.manager": "Pasirinkite fondo valdytoją:",
+  "label.period": "Pairinkite laikotarpį:",
+  "label.date_range": "{start} - {end}",
+
+  "period.ytd": "Nuo metų pradžios",
+  "period.since_inception": "Nuo veiklos pradžios",
+  "period.1y": "1 metai",
+  "period.2y": "2 metai",
+  "period.3y": "3 metai",
+  "period.4y": "4 metai",
+  "period.5y": "5 metai",
+
+  "section.growth.title": "Sukauptas prieaugis",
+  "section.growth.help": "Bendras sukauptas prieaugis pasirinktame laikotarpyje, darant prielaidą, kad visą laiką išlikote investavę.",
+
+  "section.avg_return.title": "Vidutinė metinė grąža",
+  "section.avg_return.help": "Metinė vidutinė grąža per pasirinktą laikotarpį.",
+
+  "section.extremes.title": "Blogiausias ir geriausias ketvirtis",
+  "section.extremes.help": "Blogiausio ir geriausio atskiro ketvirčio grąža kiekvienam fondui pasirinktame laikotarpyje.",
+
+  "section.participants.title": "Dalyvių skaičius",
+  "section.participants.help": "Rodo naujausią fondo dalyvių skaičių ir jo pokytį per pasirinktą laikotarpį.",
+
+  "section.expenses.title": "Išlaidos",
+  "section.expenses.help": "Rodo faktines fondo praėjusių metų išlaidas. Didesnė reikšmė reiškia didesnius mokesčius.",
+
+  "col.fund": "Fondo Valdytojas",
+  "col.cumulative_growth": "Sukauptas prieaugis (%)",
+  "col.avg_yearly_return": "Vidutinė metinė grąža (%)",
+  "col.worst_quarter": "Blogiausias ketvirtis (%)",
+  "col.best_quarter": "Geriausias ketvirtis (%)",
+  "col.participants_latest": "Dalyvių skaičius",
+  "col.participants_change": "Dalyvių skaičiaus pokytis",
+  "col.expense_ratio": "Išlaidų rodiklis (BAR, %)",
+
+  "msg.fund_not_exist": "Veikia trumpiau",
+  "msg.no_data_reported": "Duomenų nepateikta"
+}

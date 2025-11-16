@@ -1,0 +1,43 @@
+{
+  "app.title": "Pension Fund Comparison Tool",
+
+  "label.fund_type": "Select your fund:",
+  "label.manager": "Select your fund manager:",
+  "label.period": "View performance over:",
+  "label.date_range": "{start} - {end}",
+
+  "period.ytd": "YTD",
+  "period.since_inception": "Since Inception",
+  "period.1y": "1Y",
+  "period.2y": "2Y",
+  "period.3y": "3Y",
+  "period.4y": "4Y",
+  "period.5y": "5Y",
+
+  "section.growth.title": "Cumulative Growth",
+  "section.growth.help": "Total compounded growth over the selected period, assuming you stayed invested the whole time.",
+
+  "section.avg_return.title": "Average Yearly Return",
+  "section.avg_return.help": "Annualised average return per year over the selected period.",
+
+  "section.extremes.title": "Worst vs Best Quarter",
+  "section.extremes.help": "Worst and best single quarter returns for each fund within the selected period.",
+
+  "section.participants.title": "Number of Participants",
+  "section.participants.help": "Shows the latest number of participants in the fund and how that number has changed over the selected period.",
+
+  "section.expenses.title": "Expenses",
+  "section.expenses.help": "Shows the fund's factual expenses for last year. Higher values mean higher fees.",
+
+  "col.fund": "Fund",
+  "col.cumulative_growth": "Cumulative growth (%)",
+  "col.avg_yearly_return": "Avg yearly return (%)",
+  "col.worst_quarter": "Worst quarter (%)",
+  "col.best_quarter": "Best quarter (%)",
+  "col.participants_latest": "Number of participants",
+  "col.participants_change": "Change in participants",
+  "col.expense_ratio": "Expense ratio (BAR, %)",
+
+  "msg.fund_not_exist": "Fund did not exist",
+  "msg.no_data_reported": "No data reported"
+}
