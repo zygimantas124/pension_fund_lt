@@ -18,6 +18,17 @@ def fund_code_to_fund_owner(fund_code: str) -> str | None:
     return FUND_OWNERS.get(prefix, None)
 
 
+def clean_percent_column(df, column):
+    df[column] = (
+        df[column]
+        .astype(str)
+        .str.replace(",", ".", regex=False)
+        .str.extract(r"(\d+\.?\d*)")[0]
+        .astype(float)
+    )
+    return df
+
+
 def estimate_relative_change(combined_results: pd.DataFrame) -> pd.DataFrame:
     combined_results = combined_results.sort_values(["fund_code", "report_date"])
 
@@ -61,7 +72,8 @@ COLNAMES_MAPPER = {
     "fund_name": "string",
     "number_of_participants": "int32",
     "unit_value_change_ytd_pct": "float32",
-    "bar_pct": "float32",
+    "bik_pct": "float32",
+    "predicted_bik_pct": "float32",
 }
 
 FUND_OWNERS = {
@@ -87,22 +99,17 @@ for root, dirs, files in os.walk("raw_data"):
         report_date = excel_file.columns[0]
 
         financial_data = excel_file.iloc[2:].copy()
-        financial_data = financial_data.iloc[:, [0, 1, 2, 6, 8, -3]]
+        financial_data = financial_data.iloc[:, [0, 1, 2, 6, 8, -2, -1]]
 
         financial_data.columns = list(COLNAMES_MAPPER.keys())
-
-        financial_data["bar_pct"] = (
-            financial_data["bar_pct"]
-            .astype(str)
-            .str.replace(",", ".", regex=False)
-            .str.extract(r"(\d+\.?\d*)")[0]
-            .astype(float)
-        )
 
         rows_with_financials = financial_data["fund_code"].notna()
         financial_data = financial_data[rows_with_financials].reset_index(drop=True)
 
         financial_data = financial_data.replace(["Veikia trumpiau", "-"], None)
+        financial_data = clean_percent_column(financial_data, "bik_pct")
+        financial_data = clean_percent_column(financial_data, "predicted_bik_pct")
+
         financial_data["report_date"] = report_date
         financial_data = enforce_types(financial_data)
 
@@ -110,14 +117,25 @@ for root, dirs, files in os.walk("raw_data"):
         financial_data["fund_type"] = extract_type_from_fund_code(fund_codes)
         financial_data["company_short"] = fund_codes.apply(fund_code_to_fund_owner)
 
+        financial_data["bik_pct"] = financial_data["bik_pct"].fillna(
+            financial_data["predicted_bik_pct"]
+        )
+
         financial_data = financial_data.dropna(subset=["unit_value_change_ytd_pct"])
         combined_results.append(financial_data)
 
 if combined_results:
     combined = pd.concat(combined_results, ignore_index=True)
     combined_results = estimate_relative_change(combined)
-    path = "combined_results.csv"
-    combined_results.to_csv(path, index=False)
+
+    combined_results.to_csv("combined_results.csv")
+
+    path = "data/combined_results.json"
+    combined_results.to_json(
+        path,
+        orient="records",
+        date_format="iso",
+    )
     print(f"Saved combined file: {path}")
 else:
     print("No Excel files found / processed.")
