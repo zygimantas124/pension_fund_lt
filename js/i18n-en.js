@@ -15,6 +15,13 @@ window.FP_TRANSLATIONS_EN = {
   "period.5y": "5 years",
   "period.since_inception": "All",
 
+  // Intro text
+  "intro.text": "asdasdasdasd",
+
+  // Popovers
+  "help.fund_type": "asdasdsa",
+  "help.manager": "asdasdasd",
+
   // Section titles & help texts
   "section.growth.title": "Total cumulative return",
   "section.growth.help":
@@ -24,7 +31,7 @@ window.FP_TRANSLATIONS_EN = {
   "section.avg_return.help":
     "Shows the equivalent average yearly return if the fund had grown at a constant rate over the selected period.",
 
-  "section.expenses.title": "Total Expense Ratio (TER)",
+  "section.expenses.title": "Total Expense Ratio",
   "section.expenses.help": "The share of assets allocated to covering fund management expenses.",
 
   "section.extremes.title": "Best and worst quarter",
@@ -46,7 +53,7 @@ window.FP_TRANSLATIONS_EN = {
   "col.expense_ratio": "TER (%)",
 
   // Messages
-  "msg.fund_not_exist": "Fund did not exist in this period",
+  "msg.fund_not_exist": "Fund did not exist",
   "msg.no_data_reported": "No data reported",
 
   // Footer

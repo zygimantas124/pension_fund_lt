@@ -22,9 +22,24 @@ function applyLanguage(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
 
+  // Text: data-i18n="key"
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     el.textContent = t(key);
+  });
+
+  // Attributes: data-i18n-attr="attr:key;attr2:key2"
+  document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+    const spec = el.getAttribute("data-i18n-attr");
+    if (!spec) return;
+    spec.split(";").forEach(pair => {
+      const trimmed = pair.trim();
+      if (!trimmed) return;
+      const [attr, key] = trimmed.split(":").map(s => s.trim());
+      if (!attr || !key) return;
+      const val = t(key);
+      el.setAttribute(attr, val);
+    });
   });
 
   const btnLT = document.getElementById("btnLangLT");
@@ -36,6 +51,7 @@ function applyLanguage(lang) {
 
   updatePeriodButtons();
   renderTables();
+  initPopovers(); // IMPORTANT: reinit popovers after updating data-content
 }
 
 // ------------------------
@@ -143,7 +159,7 @@ function annualisedYearlyReturn(series) {
   return annualised * 100.0;
 }
 
-function fmtSigned(val, decimals = 2, msgIfNaN = "Fund did not exist") {
+function fmtSigned(val, decimals = 2, msgIfNaN = t("msg.fund_not_exist")) {
   if (val === null || Number.isNaN(val)) return msgIfNaN;
   const factor = Math.pow(10, decimals);
   const rounded = Math.round(val * factor) / factor;
@@ -518,7 +534,51 @@ function renderTable(tbodyId, rows, columns, selectedManager) {
 }
 
 // ------------------------
-// 6. Init
+// 6. Popovers
+// ------------------------
+
+const isTouchDevice =
+  "ontouchstart" in window ||
+  navigator.maxTouchPoints > 0 ||
+  navigator.msMaxTouchPoints > 0;
+
+function initPopovers() {
+  if (typeof $ === "undefined" || !$.fn.popover) return;
+
+  // Destroy any existing popovers so they don't keep old content
+  $(".help-popover").popover("dispose");
+
+  $(".help-popover").each(function () {
+    const $el = $(this);
+
+    if (isTouchDevice) {
+      // Mobile/tablet → click to open, tap outside to close
+      $el.popover({ trigger: "click" });
+
+      $(document).off("touchstart.fpPopover").on("touchstart.fpPopover", function (e) {
+        if (!$(e.target).closest(".help-popover").length) {
+          $(".help-popover").popover("hide");
+        }
+      });
+
+    } else {
+      // Desktop → hover
+      $el.popover({ trigger: "manual" });
+
+      $el.off("mouseenter.fpPopover mouseleave.fpPopover");
+      $el.on("mouseenter.fpPopover", function () {
+        $el.popover("show");
+      });
+
+      $el.on("mouseleave.fpPopover", function () {
+        $el.popover("hide");
+      });
+    }
+  });
+}
+
+// ------------------------
+// 7. Init
 // ------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -572,6 +632,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadData().then(() => {
     initFilters();
-    applyLanguage("lt");
+    applyLanguage("lt"); // this will also call initPopovers()
   });
 });

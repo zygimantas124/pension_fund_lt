@@ -63,7 +63,7 @@ SUFFIX_TO_RANGE = {
     "68/74": "1968-1974",
     "61/67": "1961-1967",
     "54/60": "1954-1960",
-    "TIPF": "TIPF",
+    "TIPF": "Turto Išsaugojimo Pensijų Fondai",
 }
 
 COLNAMES_MAPPER = {

@@ -15,6 +15,13 @@ window.FP_TRANSLATIONS_LT = {
   "period.5y": "5 metai",
   "period.since_inception": "Visas laikotarpis",
 
+  // Intro text
+  "intro.text": "kazkoks intro text",
+
+  // Popovers
+  "help.fund_type": "Pasirink pensijų fondo tipą pagal savo rizikos lygį (pvz. konservatyvų, subalansuotą ar akcijų).",
+  "help.manager": "Pasirink pensijų fondo valdytoją - bendrovę, kuri administruoja fondą ir priima investicinius sprendimus.",
+
   // Section titles & help texts
   "section.growth.title": "Bendra sukaupta grąža",
   "section.growth.help": "Parodo, kiek būtų uždirbęs fondas, jei būtum investavęs laikotarpio pradžioje ir laikęs investiciją iki pabaigos.",
@@ -22,7 +29,7 @@ window.FP_TRANSLATIONS_LT = {
   "section.avg_return.title": "Vidutinė metinė grąža",
   "section.avg_return.help": "Parodo, kokia būtų lygi vidutinė metinė grąža, jei fondas augtų tolygiai kasmet per pasirinktą laikotarpį.",
 
-  "section.expenses.title": "Bendrasis Išlaidų Koeficientas (BIK)",
+  "section.expenses.title": "Bendrasis Išlaidų Koeficientas",
   "section.expenses.help": "Procentinė turto dalis skiriama fondo valdymo išlaidoms padengti.",
 
   "section.extremes.title": "Geriausias ir blogiausias ketvirtis",
@@ -43,7 +50,7 @@ window.FP_TRANSLATIONS_LT = {
   "col.expense_ratio": "BIK (%)",
 
   // Messages
-  "msg.fund_not_exist": "Fondas tuo laikotarpiu dar neegzistavo",
+  "msg.fund_not_exist": "Veikė anksčiau",
   "msg.no_data_reported": "Nėra duomenų",
 
   // Footer

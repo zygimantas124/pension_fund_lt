@@ -89,14 +89,30 @@
         </div>
       </header>
 
+      <section class="text-center mb-3">
+        <h6 class="intro-header" data-i18n="intro.text"></h6>
+      </section>
+
       <!-- Filters card -->
       <div class="card mb-4">
         <div class="card-body">
           <div class="form-row">
 
             <!-- Fund type dropdown -->
-            <div class="form-group col-md-4">
-              <label data-i18n="label.fund_type">Fondo tipas</label>
+            <div class="form-group col-md-6">
+              <label>
+                <span data-i18n="label.fund_type"></span>
+                <span
+                  class="badge badge-secondary ml-1 help-popover"
+                  tabindex="0"
+                  data-toggle="popover"
+                  data-placement="right"
+                  data-i18n-attr="data-content:help.fund_type"
+                >
+                  ?
+                </span>
+              </label>
+
               <div class="dropdown w-100">
                 <button class="btn btn-light btn-sm dropdown-toggle w-100 text-left"
                         type="button"
@@ -111,8 +127,20 @@
             </div>
 
             <!-- Manager dropdown -->
-            <div class="form-group col-md-4">
-              <label data-i18n="label.manager">Valdytojas</label>
+            <div class="form-group col-md-6">
+              <label>
+                <span data-i18n="label.manager"></span>
+                <span
+                  class="badge badge-secondary ml-1 help-popover"
+                  tabindex="0"
+                  data-toggle="popover"
+                  data-placement="right"
+                  data-i18n-attr="data-content:help.manager"
+                >
+                  ?
+                </span>
+              </label>
+
               <div class="dropdown w-100">
                 <button class="btn btn-light btn-sm dropdown-toggle w-100 text-left"
                         type="button"
@@ -120,25 +148,9 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">
-                  <span id="fundManagerButtonLabel">–</span>
+                  <span id="fundManagerButtonLabel">-</span>
                 </button>
                 <div class="dropdown-menu w-100" aria-labelledby="fundManagerButton" id="fundManagerMenu"></div>
-              </div>
-            </div>
-
-            <!-- ETF dropdown (placeholder until you implement it) -->
-            <div class="form-group col-md-4">
-              <label data-i18n="label.etf">Biržoje Prekiaujami Fondai</label>
-              <div class="dropdown w-100">
-                <button class="btn btn-light btn-sm dropdown-toggle w-100 text-left"
-                        type="button"
-                        id="etfButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                  <span id="etfButtonLabel">–</span>
-                </button>
-                <div class="dropdown-menu w-100" aria-labelledby="etfButton" id="etfMenu"></div>
               </div>
             </div>
 
