@@ -55,6 +55,6 @@ window.FP_TRANSLATIONS_LT = {
   // Footer
   "footerDisclaimer": "Šios svetainės turinys nėra laikomas finansiniu ar investiciniu patarimu. Prieš priimdami sprendimus pasitarkite su specialistu.",
   "footer.updated": "Duomenys Papildyti",
-  "footer.updated_date": "2025-09-30"
+  "footer.updated_date": "2026-01-20"
 
 };

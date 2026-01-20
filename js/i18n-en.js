@@ -55,5 +55,5 @@ window.FP_TRANSLATIONS_EN = {
   // Footer
   "footerDisclaimer": "The content on this website does not constitute financial or investment advice. Consult a licensed professional before making decisions.",
   "footer.updated": "Data Updated",
-  "footer.updated_date": "2025-09-30"
+  "footer.updated_date": "2026-01-20"
 };
